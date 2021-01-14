@@ -27,6 +27,7 @@ hexo g
 
 ```bash
 hexo s
+hexo s -p 8888
 ```
 
 ### 上传(github/your server/...)
