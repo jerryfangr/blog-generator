@@ -16,6 +16,7 @@ tags: ['学习笔记', 'web', 'javascript']
 <br>
 
 
+
 ## 示例
 
 ### 没有Promise时的面对连续的异步
@@ -34,6 +35,7 @@ asyncFunction1(input, data1 =>{
     })
 })
 ```
+
 
 
 ### 有Promise时的面对连续的异步
@@ -73,6 +75,8 @@ p.then((data2) => {
 ```
 
 <br>
+
+
 
 ## 创建
 
@@ -212,6 +216,7 @@ catch --> Error: error in then 1
 ```
 
 <br>
+
 
 
 ## 类方法

@@ -9,7 +9,6 @@ tags: ['学习笔记', 'web', 'javascript']
 ## 介绍
 
 **如果说Promise的出现是为了解决异步又长又臭的回调问题，使之更加灵活。**
-
 **那async与await的出现，就是为了让你感觉不到异步与同步书写的区别，是目前异步的终极解决方案**
 <br>
 
@@ -174,9 +173,7 @@ Promise {<pending>}
 * **特性**
 
 async的返回必然是一个promise。
-
 如果返回值为非Promise类型，则返回一个resolve状态，数值为返回值的promise。
-
 如果返回值为Promise类型，则返回该promise。
 
 <br>
@@ -245,16 +242,10 @@ Error: code 4
 * **特性**
 
 await 右边为非promise的数值，直接返回该数值。
-
 await 右边为promise，直接返回该promise的resolve值或throw reject值。
-
 <br>
 
-
-
 ## 结尾
-
 异步的解决方案，从 回调 到 promise 到 async&await，已经趋于同步了。
-
 显然如今async 与await这样的语法糖比像[node-fibers](https://github.com/laverdet/node-fibers)这样的要更直观，更符合书写逻辑了。
 
