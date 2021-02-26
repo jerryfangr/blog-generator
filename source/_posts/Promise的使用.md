@@ -7,15 +7,13 @@ categories: [学习笔记, javascript]
 
 
 
-# Promise的使用
+# 开篇
 
 ## 介绍
 
 Promise 的字面直译是承诺。
-
 MDN上的解释是，Promise是一个对象，它代表了一个异步操作的最终完成或者失败。
-
-从使用上来看，Promise是对异步回调的一种新的解决方案，让异步更加灵活，还可以摆脱令人僵硬的三角结构，。
+从使用上来看，Promise是对异步回调的一种新的解决方案，让异步更加灵活，还可以摆脱令人僵硬的三角结构。
 
 
 
@@ -37,6 +35,8 @@ asyncFunction1((data1) =>{
     })
 })
 ```
+
+
 
 ### 有Promise时的面对连续的异步
 
@@ -66,9 +66,11 @@ p.then((data2) => {
 })
 ```
 
+<br>
 
+# 使用
 
-## 使用
+## 创建
 
 ### new Promise(excutor: Function)
 
@@ -100,11 +102,16 @@ console.log(3)
 3
 ```
 
+<br>
 
 
-### then(onFulfilled: Function, onRejected: Function) 实例方法
 
-传入操作成功或失败的回调函数来获取结果，回调会以异步的方式运行
+## 实例(原型)方法
+
+### then(onFulfilled: Function, onRejected: Function) 
+
+then接收两个函数，操作成功和失败的回调函数。
+该回调函数会以异步的方式执行。
 
 ```js
 console.log(1)
@@ -132,9 +139,8 @@ console.log(4)
 3
 ```
 
-then实际会返回一个新的Promise实例，所以then可以无限链式下去
-
-在then的链式中，下一个then的调用由上一个then的结果决定
+then实际会返回一个新的Promise实例，所以then可以无限链式下去。
+在then的链式中，下一个then的调用由上一个then的结果决定。
 
 ```js
 new Promise((resolve, reject) => {
@@ -162,15 +168,13 @@ new Promise((resolve, reject) => {
 第三个then的成功回调
 ```
 
+<br>
 
-
-### catch(onRejected: Function) 实例方法
+### catch(onRejected: Function) 
 
 如果then的调用链中都没有指定onRejected函数，那么Promise会补一个onRejected继续传递错误的回调。
-
-该默认onRejected错会调用下一个then的onRejected从而把错误下传，直至遇到自定义的onRejected
-
-catch实质上就是在最后接一个有onRejected的then
+该默认onRejected错会调用下一个then的onRejected从而把错误下传，直至遇到自定义的onRejected。
+catch实质上就是在最后接一个有onRejected的then。
 
 ```js
 new Promise((resolve, reject) => {
@@ -200,13 +204,16 @@ Error: 第一个then的成功回调
 第四个then的成功回调
 ```
 
+<br>
 
 
-### all(promises: iterable) 类方法
 
-all 接收一个promise的iterable类型（Array，Map，Set都属于ES6的iterable类型），返回一个Promise
+## 类方法
 
-all接收多个Promise实例，所有实例都成功执行，则执行成功回调，任意一个出错执行失败的回调
+### all(promises: iterable) 
+
+all 接收一个promise的iterable类型（Array，Map，Set都属于ES6的iterable类型），返回一个Promise。
+all接收多个Promise实例，所有实例都成功执行，则执行成功回调，任意一个出错执行失败的回调。
 
 ```js
 let p1 = new Promise((resolve) => {
@@ -236,13 +243,12 @@ Promise.all([p1, p2])
 3
 ```
 
-
+<br>
 
 ### race(promises: iterable) 类方法
 
-race与all一样接收一个promise的iterable类型，返回一个Promise
-
-all接收多个Promise实例，任何一个先执行完成promise的回调决定 race的回调
+race与all一样接收一个promise的iterable类型，返回一个Promise。
+all接收多个Promise实例，任何一个先执行完成promise的回调决定 race的回调。
 
 ```js
 let p1 = new Promise((resolve) => {
