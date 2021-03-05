@@ -42,17 +42,17 @@ tags: ['学习笔记', 'web', 'javascript']
       // 数据
       private _data: any;
       // then的回调
-      private _thenCallback?: Function;
+      private _thenCallbacks: { [k: string]: Function}[];
   
       /**
        * * 构造方法
-     * @param excutor 需要执行的异步或同步函数
+       * @param excutor 需要执行的异步或同步函数
        */
       constructor(excutor: (resolve: Function, reject: Function) => void) {
           // 初始化状态
           this._state = STATE.PENGDING;
       	this._data = undefined;
-          this._thenCallback = undefined;
+          this._thenCallbacks = [];
           const self = this;
   
           // 修改状态，触发回调
@@ -60,8 +60,14 @@ tags: ['学习笔记', 'web', 'javascript']
               if (self._state === STATE.PENGDING) {
                   self._state = state;
                   self._data = data;
-                  this.__thenCallback?.(data);
   
+                  if (state === STATE.FULFILLED) {
+                      self._thenCallbacks.forEach(callback => {callback.success?.(data);})
+                  } else {
+                      self._thenCallbacks.forEach(callback => { callback.fail?.(data); })
+                  }
+                  
+                  // test log
                   let logMessage = state === STATE.FULFILLED ? 'resolve data: ' : 'reject reason: ';
                   console.log(logMessage, data);
               }
@@ -209,10 +215,10 @@ tags: ['学习笔记', 'web', 'javascript']
   
               // 上一步的执行函数未执行完毕，记录要触发的回调
               if (self._state === STATE.PENGDING) {
-                  this._thenCallback = {
+                  this._thenCallbacks.push({
                       success: () => { handle(onResolved) },
                       fail: () => { handle(onRejected) },
-                  }
+                  })
                   // 上一步的执行函数已执行，且为完成状态，异步执行触发函数
               } else if (self._state === STATE.FULFILLED) {
                   setTimeout(() => { handle(onResolved)}, 0);
