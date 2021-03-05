@@ -37,12 +37,12 @@ tags: ['学习笔记', 'web', 'javascript']
   ```javascript
   new JsonDatabase('dbname')
   	// data: []
-      .all()
+  	.all()
   	// data: [1, 2, 3, 4, 5]
-      .get(dataList => {
+  	.get(dataList => {
   		// [1, 2, 3, 4, 5]
   	}, error => {
-      	// error
+  		// error
   	})
   ```
 
@@ -51,14 +51,14 @@ tags: ['学习笔记', 'web', 'javascript']
   ```javascript
   new JsonDatabase('dbname')
   	// data: []
-      .all()
+  	.all()
   	// data: [1, 2, 3, 4, 5]
   	.limit(2, 3) // startIndex, numberOfData
   	// data: [3, 4, 5]
-      .get(dataList => {
+  	.get(dataList => {
   		// [2, 3, 4]
   	}, error => {
-      	// error
+  		// error
   	})
   ```
 
@@ -67,14 +67,14 @@ tags: ['学习笔记', 'web', 'javascript']
   ```javascript
   new JsonDatabase('dbname')
   	// data: []
-      .all()
+  	.all()
   	// data: [{id: 0, value: 'a1'}, {id: 1, value: 'a2'}, {id: 0, value: 'b'}]
   	.filter({value: /a\d+$/i})
   	// data: [{id: 0, value: 'a1'}, {id: 1, value: 'a2'}]
-      .get(dataList => {
+  	.get(dataList => {
   		// [{id: 0, value: 'a1'}, {id: 1, value: 'a2'}]
   	}, error => {
-      	// error
+  		// error
   	})
   ```
 
@@ -87,18 +87,18 @@ tags: ['学习笔记', 'web', 'javascript']
   ```javascript
   new JsonDatabase('dbname')
   	// data: []
-      .all()
+  	.all()
   	// data: [{id: 0, value: 'a1'}, {id: 1, value: 'a2'}]
   	.update({
-      	id: 0,
-      	value: 'new a1',
-      	time: 'new time'
+  		id: 0,
+  		value: 'new a1',
+  		time: 'new time'
   	})
   	// data: [{id: 0, value: 'new a1', time: 'new time'}, {id: 1, value: 'a2'}]
-      .get(dataList => {
+  	.get(dataList => {
   		// [{id: 0, value: 'new a1', time: 'new time'}, {id: 1, value: 'a2'}]
   	}, error => {
-      	// error
+  		// error
   	})
   	// data: [{id: 0, value: 'new a1', time: 'new time'}, {id: 1, value: 'a2'}]
   	.save()
@@ -113,7 +113,7 @@ tags: ['学习笔记', 'web', 'javascript']
   ```javascript
   new JsonDatabase('dbname')
   	// data: []
-      .all()
+  	.all()
   	// data: []
   	.add(1)
   	// data: [{id: 0, value: 1}]
@@ -130,7 +130,7 @@ tags: ['学习笔记', 'web', 'javascript']
 
   ```javascript
   new JsonDatabase('dbname')
-      .all()
+  	.all()
   	// data: [{id: 0, name: 'a1'}, {id: 1, name: 'a2'}, {id: 2, name: 'a3'}]
   	.remove(1)
   	// data: [{id: 0, name: 'a1'}, {id: 2, name: 'a3'}]
@@ -438,6 +438,6 @@ tags: ['学习笔记', 'web', 'javascript']
 3. 数据过滤在一些> < >= 的情况下反而麻烦了不少
 4. ...
 
-不过预想就是用来谢谢demo的，也算够了
+不过本来预想就是用来写写demo的，也算够了
 
 ​	
