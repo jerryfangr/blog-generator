@@ -21,12 +21,12 @@ tags: ['学习笔记', 'web', 'javascript']
 ### 没有Promise时的面对连续的异步
 
 ```js
-asyncFunction1((data1) =>{
-    asyncFunction2((data2) => {
-        asyncFunction3((data3) => {
-            asyncFunction4((data4) => {
-                asyncFunction5((data5) => {
-                    // 瞧瞧这优美的三角结构，这可是只有纯粹的异步才能独享的moment
+asyncFunction1(input, data1 =>{
+    asyncFunction2(data1, data2 => {
+        asyncFunction3(data2, data3 => {
+            asyncFunction4(data3, data4 => {
+                asyncFunction5(data4, data5 => {
+                    // 瞧瞧这优美的三角结构
                     console.log(data5);
                 })
             })
@@ -40,23 +40,31 @@ asyncFunction1((data1) =>{
 
 ```js
 let p = new Promise((resolve) => {
-    asyncFunction1((data1) => { resolve(data1); });
+    asyncFunction1(input, data1 => { resolve(data1); });
 })
-.then((data1) => {
-    asyncFunction2((data2) => { return data2; });
+.then(data1 => {
+    rerurn new Promise((resolve) => {
+        asyncFunction2(data1, data2 => { resolve(data2); })
+    });
 })
 
-// 中途随意出去做了点事
+// 可以随意中断链式
 console.log('do something')
 
 p.then((data2) => {
-    asyncFunction3((data3) => { return data3; });
+    rerurn new Promise((resolve) => {
+        asyncFunction3(data2, data3 => { resolve(data3); })
+    });
 })
 .then((data3) => {
-    asyncFunction4((data4) => { return data4; });
+    rerurn new Promise((resolve) => {
+        asyncFunction3(data3, data4 => { resolve(data4); })
+    });
 })
 .then((data4) => {
-    asyncFunction5((data5) => { return data5; });
+    rerurn new Promise((resolve) => {
+        asyncFunction3(data4, data5 => { resolve(data5); })
+    });
 })
 .then((data5) => {
     // 优美三角的陨落
@@ -143,7 +151,8 @@ new Promise((resolve, reject) => {
 	resolve(); 
 })
 .then(() => {
-    throw new Error('第一个then的成功回调')
+    console.log('第一个then的成功回调')
+    throw new Error('error in then 1');
 })
 .then(() => {
     console.log('第二个then的成功回调')
@@ -160,6 +169,7 @@ new Promise((resolve, reject) => {
 上面的执行结果为：
 
 ```bash
+第一个then的成功回调
 第二个then的失败回调
 第三个then的成功回调
 ```
@@ -176,7 +186,8 @@ new Promise((resolve, reject) => {
 	resolve(); 
 })
 .then(() => {
-    throw new Error('第一个then的成功回调')
+    console.log('第一个then的成功回调')
+    throw new Error('error in then 1');
 })
 .then(() => {
     console.log('第二个then的成功回调')
@@ -185,7 +196,7 @@ new Promise((resolve, reject) => {
     console.log('第三个then的成功回调')
 })
 .catch((error) => {
-    console.log(error);
+    console.log('catch --> ', error);
 })
 .then(() => {
     console.log('第四个then的成功回调')
@@ -195,7 +206,8 @@ new Promise((resolve, reject) => {
 * 上面的执行结果为：
 
 ```bash
-Error: 第一个then的成功回调
+第一个then的成功回调
+catch --> Error: error in then 1
 第四个then的成功回调
 ```
 
@@ -214,13 +226,13 @@ let p1 = new Promise((resolve) => {
 	setTimeout(() => { 
         console.log(1)
         resolve();
-    })
+    }, 100)
 });
 let p2 = new Promise((resolve) => {
 	setTimeout(() => { 
         console.log(2)
         resolve();
-    })
+    }, 200)
 });
 
 Promise.all([p1, p2])
