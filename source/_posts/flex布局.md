@@ -14,7 +14,7 @@ tags: ['学习笔记', 'web', 'css']
 
 **那么以下，我会粗略概括flex的主要用法和特性。**
 
-[本篇示例 CodePen](https://codepen.io/jerryfangr/pen/BapEVNR)
+[本篇的示例代码 CodePen](https://codepen.io/jerryfangr/pen/BapEVNR)
 
 <br>
 
@@ -30,7 +30,7 @@ tags: ['学习笔记', 'web', 'css']
 
 **如下，为Flex中默认的主侧轴的方向，其中主轴可以修改为垂直方向，侧轴会随之修改为水平方向。**
 
-![image-20210428143553537](./assets/image-20210428143553537.png) 
+![image-20210428143553537](/assets/images/image-20210428143553537.png) 
 
 
 
@@ -55,9 +55,9 @@ flex-direction: row | row-reverse | column | column-reverse;
 
 **根据上面的结构，依次改变flex-container的`flex-direction`属性结果如下。**
 
-![image-20210428162702928](./assets/image-20210428162702928.png) ![image-20210428162831843](./assets/image-20210428162831843.png) 
+![image-20210428162702928](/assets/images/image-20210428162702928.png) ![image-20210428162831843](/assets/images/image-20210428162831843.png) 
 
-![image-20210428162915932](./assets/image-20210428162915932.png) ![image-20210428163023522](./assets/image-20210428163023522.png) 
+![image-20210428162915932](/assets/images/image-20210428162915932.png) ![image-20210428163023522](/assets/images/image-20210428163023522.png) 
 
 
 
@@ -82,9 +82,9 @@ flex-wrap: nowrap | wrap | wrap-reverse;
 
 **根据上面的结构，依次改变flex-container的`flex-wrap`属性结果如下。**
 
-![image-20210428164522908](./assets/image-20210428164522908.png) ![image-20210428165106732](./assets/image-20210428165106732.png) 
+![image-20210428164522908](/assets/images/image-20210428164522908.png) ![image-20210428165106732](/assets/images/image-20210428165106732.png) 
 
-![image-20210428165539312](./assets/image-20210428165539312.png) 
+![image-20210428165539312](/assets/images/image-20210428165539312.png) 
 
 
 
@@ -118,11 +118,11 @@ justify-content: flex-start | flex-end | center | space-between | space-around;
 
 **根据上面的结构，依次改变flex-container的`justify-content`属性结果如下**
 
-![image-20210428170615368](./assets/image-20210428170615368.png)  ![image-20210428170756152](./assets/image-20210428170756152.png)  
+![image-20210428170615368](/assets/images/image-20210428170615368.png)  ![image-20210428170756152](/assets/images/image-20210428170756152.png)  
 
-![image-20210428170921872](./assets/image-20210428170921872.png) ![image-20210428170953911](./assets/image-20210428170953911.png) 
+![image-20210428170921872](/assets/images/image-20210428170921872.png) ![image-20210428170953911](/assets/images/image-20210428170953911.png) 
 
-![image-20210428171026211](./assets/image-20210428171026211.png) 
+![image-20210428171026211](/assets/images/image-20210428171026211.png) 
 
 
 
@@ -148,11 +148,11 @@ align-items: stretch | flex-start | flex-end | center | baseline;
 
 **根据上面的结构，依次改变flex-container的`align-items`属性结果如下**
 
-![image-20210428172436372](./assets/image-20210428172436372.png) ![image-20210428172514145](./assets/image-20210428172514145.png) 
+![image-20210428172436372](/assets/images/image-20210428172436372.png) ![image-20210428172514145](/assets/images/image-20210428172514145.png) 
 
-![image-20210428172536071](./assets/image-20210428172536071.png) ![image-20210428172624951](./assets/image-20210428172624951.png) 
+![image-20210428172536071](/assets/images/image-20210428172536071.png) ![image-20210428172624951](/assets/images/image-20210428172624951.png) 
 
-![image-20210428172751242](./assets/image-20210428172751242.png) 
+![image-20210428172751242](/assets/images/image-20210428172751242.png) 
 
 
 
@@ -182,11 +182,11 @@ align-content: stretch | flex-start | flex-end | center | space-between | space-
 
 **根据上面的结构，依次改变flex-container的`align-content`属性结果如下**
 
-![image-20210428174143851](./assets/image-20210428174143851.png) ![image-20210428174356951](./assets/image-20210428174356951.png) 
+![image-20210428174143851](/assets/images/image-20210428174143851.png) ![image-20210428174356951](/assets/images/image-20210428174356951.png) 
 
-![image-20210428174420131](./assets/image-20210428174420131.png) ![image-20210428174445871](./assets/image-20210428174445871.png) 
+![image-20210428174420131](/assets/images/image-20210428174420131.png) ![image-20210428174445871](/assets/images/image-20210428174445871.png) 
 
-![image-20210428174522632](./assets/image-20210428174522632.png) ![image-20210428174555412](./assets/image-20210428174555412.png) 
+![image-20210428174522632](/assets/images/image-20210428174522632.png) ![image-20210428174555412](/assets/images/image-20210428174555412.png) 
 
 
 
